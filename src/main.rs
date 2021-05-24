@@ -1,5 +1,9 @@
 use std::path::PathBuf;
+use std::io::BufReader;
 use structopt::StructOpt;
+use std::io::prelude::*;
+use std::fs::File;
+use anyhow::{Context, Result};
 
 /// Search for a pattern in a file and display the lines that contain it.
 #[derive(StructOpt, Debug)]
@@ -12,7 +16,16 @@ struct Opt {
     path: PathBuf,
 }
 
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Opt::from_args();
-    println!("{:?}", args)
+    let f = File::open(&args.path)
+    .with_context(|| format!("could not read file `{:?}`", &args.path))?;
+    //.expect(&format!("Could not read file {:?}", args.path)[..]);
+    let reader = BufReader::new(f);
+    for (ln, line) in reader.lines().map(|l| l.unwrap()).enumerate() {
+        if line.contains(&args.pattern) {
+            println!("{}: {}", ln, line);
+        }
+    }
+    Ok(())
 }

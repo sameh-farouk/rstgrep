@@ -80,10 +80,10 @@ If you have installed Rustup some time ago, chances are your Rust version is out
 
 ### from src code
 
-`cargo run -- <pattern> -p <path>`
+`cargo run -- <pattern> <path>`
 
    ```sh
-   cargo run -- main -p ./src/main.rs
+   cargo run -- main ./src/main.rs
    ```
 
 for help you can run
@@ -98,11 +98,11 @@ for help you can run
    ```
 you will find the built binary in `./target/release/`
 
-2. run `./rstgrep <pattern> -p <path>`
+2. run `./rstgrep <pattern> <path>`
 :
    ```sh
    cd target/release
-   ./rstgrep main -p ../../src/main.rs
+   ./rstgrep main ../../src/main.rs
    ```
 
 for help you can run

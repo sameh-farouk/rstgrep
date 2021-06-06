@@ -92,6 +92,10 @@ for help you can run
 
 ### from a release binary
 
+you can downlaod the latest release from [here](https://github.com/sameh-farouk/rstgrep/releases)
+
+or build it yourself from source code
+
 1. first to build the binary run `cargo build` command:
    ```sh
    cargo build --release

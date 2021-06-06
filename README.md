@@ -108,6 +108,24 @@ you will find the built binary in `./target/release/`
 for help you can run
 `./rstgrep --help`
 
+```
+rstGREP 0.2.0
+an alternative to grep written in Rust.
+
+USAGE:
+    rstgrep [FLAGS] <pattern> <path>
+
+FLAGS:
+    -c, --count          print only a count of selected lines per FILE
+    -h, --help           Prints help information
+    -n, --line-number    Show relative line number in the file
+    -r, --recursive      Read all files under each directory, recursively
+    -V, --version        Prints version information
+
+ARGS:
+    <pattern>    The pattern to look for
+    <path>       The path to the file to read
+```
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [The Rust Programming Language: The Book](https://doc.rust-lang.org/book/title-page.html)

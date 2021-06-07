@@ -28,15 +28,16 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-note: this project for-educational-purposes-only and it have a basic code in rust as i started to learn rust just days ago.
+note: this project for-educational-purposes-only.
 
-this is a mini grep clone. That is a tool that we can give a string and a file path and it’ll print only the lines that contain the given string.
+this is a mini grep clone. That is a tool that we can give a string or regex pattern and a file path and it’ll print only the lines that contain the given string.
 
 while i code this project  I practiced the fundamentals and learnt about:
 * Parsing CLI arguments with `StructOpt`
 * using `BufReader` to read files contents.
 * handling Potential failure using a shortcut method on `Results`, called `unwrap`
 * use `anyhow` library to provide a context and build a custom error message and get a “chain” of error messages pointing out the root cause.
+* parsing, compiling, and executing regular expressions.
 
 ### Built With
 
@@ -92,7 +93,7 @@ for help you can run
 
 ### from a release binary
 
-you can downlaod the latest release from [here](https://github.com/sameh-farouk/rstgrep/releases)
+you can downlaod the latest release from [here](https://github.com/sameh-farouk/rstgrep/releases) which built and tested on ubuntu 20.04
 
 or build it yourself from source code
 
@@ -100,7 +101,10 @@ or build it yourself from source code
    ```sh
    cargo build --release
    ```
-you will find the built binary in `./target/release/`
+   you will find the built binary in `./target/release/`
+   ```sh
+   cd target/release/
+   ```
 
 2. run `./rstgrep <pattern> <path>`
 :
@@ -130,6 +134,21 @@ ARGS:
     <pattern>    The pattern to look for
     <path>       The path to the file to read
 ```
+
+finally, to be able to run rstgrep from any location without specifing the executable path, you could move or copy it to a location which exists in your PATH.
+for example ```cp rstgrep ~/.local/bin/```
+also you have to make sure that the rstgrep have executable permissions.
+we can add execute permissions to the file (for everyone, perhaps) with ```chmod +x rstgrep```
+
+## Examples
+rstgrep regex syntax is similar to Perl-style regular expressions. you could do intersting things like find all lines with a date.
+
+```sh
+rstgrep -r "\d{4}-\d{2}-\d{2}" testfile
+```
+
+The syntax supported in rstgrep pattern is documented [here](https://docs.rs/regex/1.5.4/regex/#syntax)
+
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [The Rust Programming Language: The Book](https://doc.rust-lang.org/book/title-page.html)

@@ -80,10 +80,10 @@ If you have installed Rustup some time ago, chances are your Rust version is out
 
 ### from src code
 
-`cargo run -- <pattern> -p <path>`
+`cargo run -- <pattern> <path>`
 
    ```sh
-   cargo run -- main -p ./src/main.rs
+   cargo run -- main ./src/main.rs
    ```
 
 for help you can run
@@ -92,22 +92,44 @@ for help you can run
 
 ### from a release binary
 
+you can downlaod the latest release from [here](https://github.com/sameh-farouk/rstgrep/releases)
+
+or build it yourself from source code
+
 1. first to build the binary run `cargo build` command:
    ```sh
    cargo build --release
    ```
 you will find the built binary in `./target/release/`
 
-2. run `./rstgrep <pattern> -p <path>`
+2. run `./rstgrep <pattern> <path>`
 :
    ```sh
    cd target/release
-   ./rstgrep main -p ../../src/main.rs
+   ./rstgrep main ../../src/main.rs
    ```
 
 for help you can run
 `./rstgrep --help`
 
+```
+rstGREP 0.2.0
+an alternative to grep written in Rust.
+
+USAGE:
+    rstgrep [FLAGS] <pattern> <path>
+
+FLAGS:
+    -c, --count          print only a count of selected lines per FILE
+    -h, --help           Prints help information
+    -n, --line-number    Show relative line number in the file
+    -r, --recursive      Read all files under each directory, recursively
+    -V, --version        Prints version information
+
+ARGS:
+    <pattern>    The pattern to look for
+    <path>       The path to the file to read
+```
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [The Rust Programming Language: The Book](https://doc.rust-lang.org/book/title-page.html)

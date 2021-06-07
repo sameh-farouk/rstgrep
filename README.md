@@ -20,6 +20,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#examples">Examples</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -76,7 +77,7 @@ If you have installed Rustup some time ago, chances are your Rust version is out
 
 
 
-<!-- USAGE EXAMPLES -->
+<!-- USAGE -->
 ## Usage
 
 ### from src code
@@ -140,6 +141,7 @@ for example ```cp rstgrep ~/.local/bin/```
 also you have to make sure that the rstgrep have executable permissions.
 we can add execute permissions to the file (for everyone, perhaps) with ```chmod +x rstgrep```
 
+<!-- USAGE EXAMPLES -->
 ## Examples
 rstgrep regex syntax is similar to Perl-style regular expressions. you could do intersting things like find all lines with a date.
 

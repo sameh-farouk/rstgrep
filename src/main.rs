@@ -71,7 +71,7 @@ fn match_pattern_in_file(f: &std::fs::File, args: &Opt, path: &std::path::PathBu
             },
         }
     }
-    if args.c && count > 0 {
+    if args.c && (count > 0 || !args.r){
         println!("Count: {}", count);
     }
 }

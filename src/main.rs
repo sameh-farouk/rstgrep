@@ -13,7 +13,7 @@ struct Opt {
     /// The pattern to look for
     pattern: Regex,
     /// The path to the file to read
-    #[structopt(parse(from_os_str))]
+    #[structopt(parse(from_os_str), default_value =".")]
     path: PathBuf,
     /// Show relative line number in the file
     #[structopt(short, long = "--line-number")]
@@ -24,6 +24,9 @@ struct Opt {
     /// print only a count of selected lines per FILE
     #[structopt(short, long = "--count")]
     c: bool,
+    /// Suppress normal output, instead print the name of each input file from which output would normally have been printed.
+    #[structopt(short, long = "--files-with-matches", requires("r"))]
+    l: bool,
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -53,7 +56,7 @@ fn match_pattern_in_file(f: &std::fs::File, args: &Opt, path: &std::path::PathBu
                         println!();
                         println!("-------- File Path: {} --------", path.display());
                     }
-                    if !args.c {
+                    if !args.c && !args.l {
                         if args.n {
                             print!("{}:\t", ln+1);
                         }
